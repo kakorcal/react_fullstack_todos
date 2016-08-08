@@ -1,7 +1,9 @@
 const webpack = require('webpack');
+const validate = require('webpack-validator');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+const config = {
   entry: {
     app: path.resolve('client', 'index.jsx')
   },
@@ -12,13 +14,25 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'babel',
+        loader: 'babel-loader',
         test: /\.jsx?$/,
-        include: /client/
+        include: /(client|components)/,
+        query: {
+          presets: ['es2015', 'react']
+        }
       }
     ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist'], {
+      // location of webpack.config.js
+      root: __dirname,
+      verbose: true
+    })
+  ]
 };
+
+module.exports = validate(config);
