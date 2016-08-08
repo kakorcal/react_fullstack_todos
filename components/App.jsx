@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import TextInput from './TextInput'
 
 class App extends Component{
@@ -8,14 +9,15 @@ class App extends Component{
       text: ''
     };
   }
-  updateText(text){
+  updateText(){
+    let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
     this.setState({text});
   }
   render(){
     return (
       <div>
-        <h1>This a react app~</h1>
-        <TextInput updateText={this.updateText.bind(this)} text={this.state.text}/>
+        <h1>React Todos App</h1>
+        <TextInput ref='input' updateText={this.updateText.bind(this)} text={this.state.text}/>
       </div>
     );
   }
