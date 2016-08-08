@@ -1,16 +1,16 @@
+'use strict'
 const webpack = require('webpack');
+const parts = require('./webpack.parts');
+const merge = require('webpack-merge')
 const validate = require('webpack-validator');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
-const config = {
+const common = {
   devtool: 'source-map',
-  entry: {
-    app: path.resolve('client', 'index.jsx')
-  },
   output: {
     filename: 'bundle.js',
-    path: path.resolve('dist')
+    path: path.resolve('dist'),
+    publicPath: '/'
   },
   module: {
     loaders: [
@@ -19,22 +19,26 @@ const config = {
         test: /\.jsx?$/,
         include: /(client|components)/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react', 'react-hmre']
         }
       }
     ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  },
-  plugins: [
-    new CleanWebpackPlugin(['dist'], {
-      // location of webpack.config.js
-      root: __dirname,
-      // logger
-      verbose: true
-    })
-  ]
+  }
 };
+
+let config;
+switch(process.env.npm_lifecycle_event){
+  case 'start': 
+    config = merge(common, parts.entry('dev'), parts.hmr());
+    break;
+  case 'build':
+    config = merge(common, parts.entry('prod'), parts.clean(['dist']));
+    break;
+  default:
+    throw "Invalid command"
+}
 
 module.exports = validate(config);
