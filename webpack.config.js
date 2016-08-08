@@ -1,4 +1,3 @@
-'use strict'
 const webpack = require('webpack');
 const parts = require('./webpack.parts');
 const merge = require('webpack-merge')
