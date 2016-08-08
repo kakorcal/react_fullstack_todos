@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import TextDisplay from './TextDisplay'
 
 class TextInput extends Component{
   updateText(e){
@@ -14,6 +14,7 @@ class TextInput extends Component{
           onChange={this.updateText.bind(this)} 
           value={this.props.text}
         />
+        <TextDisplay text={this.props.text}/>
       </div>
     );
   }
