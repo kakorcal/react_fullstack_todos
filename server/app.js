@@ -14,7 +14,11 @@ if(process.env.NODE_ENV !== 'production'){
     // simulates the dist folder
     // NOTE: the bundle must be created inside the dist folder or else it can't find it.
     publicPath: config.output.publicPath,
-    stats: {colors: true}
+    stats: {
+      // Config for minimal console.log
+      colors: true,
+      chunkModules: false
+    }
   }));
   app.use(require('webpack-hot-middleware')(compiler));
 }

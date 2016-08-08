@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const parts = require('./webpack.parts');
-const merge = require('webpack-merge')
+const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 const path = require('path');
 
