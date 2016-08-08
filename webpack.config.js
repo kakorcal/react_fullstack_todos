@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 const config = {
+  devtool: 'source-map',
   entry: {
     app: path.resolve('client', 'index.jsx')
   },
@@ -30,6 +31,7 @@ const config = {
     new CleanWebpackPlugin(['dist'], {
       // location of webpack.config.js
       root: __dirname,
+      // logger
       verbose: true
     })
   ]
