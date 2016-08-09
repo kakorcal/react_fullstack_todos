@@ -1,8 +1,13 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 2000;
 // NOTE: the callback inside app.use will only run once you goto localhost:2000
+
+app.use(require('morgan')('tiny'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 if(process.env.NODE_ENV !== 'production'){
   const webpack = require('webpack');
