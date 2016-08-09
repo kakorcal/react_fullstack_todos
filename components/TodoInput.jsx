@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import actions from './redux/actions'
 
 export default class TodoInput extends Component {
   updateText(e){
@@ -7,7 +6,7 @@ export default class TodoInput extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    this.props.dispatch(actions.addTodo(this.props.text));
+    this.props.addTodo(this.props.text);
     this.props.clearText();
   }
   render(){

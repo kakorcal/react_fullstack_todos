@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
+import actions from './redux/actions'
 // connects component with the redux state. 
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 class App extends Component{
   constructor(){
@@ -27,9 +29,9 @@ class App extends Component{
           text={this.state.text}
           updateText={this.updateText.bind(this)}
           clearText={this.clearText.bind(this)}
-          dispatch={this.props.dispatch}
+          addTodo={this.props.actions.addTodo}
         />
-        <TodoList todos={this.props.todos} dispatch={this.props.dispatch}/>
+        <TodoList todos={this.props.todos} actions={this.props.actions}/>
       </div>
     );
   }
@@ -41,5 +43,17 @@ function mapStateToProps(state){
   return state;
 }
 
+function mapDispatchToProps(dispatch){
+  return {
+    // bindActionCreators wraps all actions with the dispatch
+    // so you don't have to do stuff like this.props.dispatch(ACTION)
+    // instead you can just call the action and it will automatically dispatch.
+    // And you don't have to pass dispatch down as props and import actions on each file anymore!
+    // if you look at App in the developer tools, you will only see this property as the App props
+    // because this is the only thing we are returning.
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
 // now App has todos as its this.props
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
