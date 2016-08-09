@@ -4,7 +4,7 @@ function getId(todos){
   }, -1) + 1;
 }
 
-export default function todoReducer(todos, action){
+export default function todoReducer(todos = [], action){
   switch(action.type){
     case 'ADD_TODO':
       return [
