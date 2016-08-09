@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
+import UserInfo from './UserInfo'
 import actions from './redux/actions'
 // connects component with the redux state. 
 import {connect} from 'react-redux'
@@ -25,6 +26,7 @@ class App extends Component{
     return (
       <div>
         <h1>React Todos App</h1>
+        <UserInfo user={this.props.user} createNewUserId={this.props.actions.createNewUserId}/>
         <TodoInput ref='input' 
           text={this.state.text}
           updateText={this.updateText.bind(this)}
