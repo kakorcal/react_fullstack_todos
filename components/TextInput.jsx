@@ -14,7 +14,7 @@ class TextInput extends Component{
           onChange={this.updateText.bind(this)} 
           value={this.props.text}
         />
-        <TextDisplay text={this.props.text}/>
+        <TextDisplay deleteLetter={this.props.deleteLetter} text={this.props.text}/>
       </div>
     );
   }
