@@ -1,0 +1,13 @@
+Redux - Just like how React separates html dom using the virtual dom, redux separates states from components to a separate store to reason about code better.
+
+• Has a single state tree for entire app.
+• State is read-only. You can get the state from the store using its getState method.
+• No components in your app changes state. they only go through actions that describe what they want done (its declarative vs imperative). Components can only subscribe to store updates.
+• Actions are objects that contain the action type and data.
+• Reducers change the app state by not mutating the state but creating an entire new one. (state, action) => newState
+• Dispatch - Receives action and gets state from store to pass them to the reducers.
+
+React-redux:
+
+• connect - any component with the connect function gets access to the state.
+• provider component - setups up which store to use for the app and connects the store to the connect function.
