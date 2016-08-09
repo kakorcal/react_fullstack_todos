@@ -29,7 +29,7 @@ class App extends Component{
           clearText={this.clearText.bind(this)}
           dispatch={this.props.dispatch}
         />
-        <TodoList todos={this.props.todos}/>
+        <TodoList todos={this.props.todos} dispatch={this.props.dispatch}/>
       </div>
     );
   }

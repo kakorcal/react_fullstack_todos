@@ -18,6 +18,20 @@ export default function reducer(state, action){
           ...state.todos
         ]
       });
+    case 'COMPLETE_TODO':
+      return Object.assign({}, state, {
+        todos: state.todos.map(todo=>{
+          // NOTE: don't want to mutate todo as well
+          return todo.id === action.id ? 
+            Object.assign({}, todo, {completed: !todo.completed}) : todo;
+        })
+      });
+    case 'DELETE_TODO':
+      return Object.assign({}, state, {
+        todos: state.todos.filter(todo=>{
+          return todo.id !== action.id;
+        })
+      });
     default:
       return state;
   }
