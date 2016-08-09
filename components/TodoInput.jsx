@@ -13,7 +13,7 @@ export default class TodoInput extends Component {
           value={this.props.text}
           onChange={this.updateText.bind(this)}
         />
-        <input type="submit" value='Submit'/>
+        <button>SUBMIT</button>
       </div>
     );
   }

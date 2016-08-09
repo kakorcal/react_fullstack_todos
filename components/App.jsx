@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import TodoInput from './TodoInput'
+import TodoList from './TodoList'
 
 class App extends Component{
   constructor(){
@@ -13,11 +14,6 @@ class App extends Component{
     let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
     this.setState({text});
   }
-  deleteLetter(){
-    // UNUSED
-    let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
-    this.setState({text: text.slice(0, text.length - 1)});
-  }
   render(){
     return (
       <div>
@@ -26,6 +22,7 @@ class App extends Component{
           text={this.state.text}
           updateText={this.updateText.bind(this)}
         />
+        <TodoList/>
       </div>
     );
   }
