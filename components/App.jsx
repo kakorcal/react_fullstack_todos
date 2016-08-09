@@ -14,6 +14,7 @@ class App extends Component{
     this.setState({text});
   }
   deleteLetter(){
+    // UNUSED
     let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
     this.setState({text: text.slice(0, text.length - 1)});
   }
@@ -21,7 +22,10 @@ class App extends Component{
     return (
       <div>
         <h1>React Todos App</h1>
-        <TodoInput text={this.state.text}/>
+        <TodoInput ref='input' 
+          text={this.state.text}
+          updateText={this.updateText.bind(this)}
+        />
       </div>
     );
   }
