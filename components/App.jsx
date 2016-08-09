@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import TextInput from './TextInput'
+import TodoInput from './TodoInput'
 
 class App extends Component{
   constructor(){
@@ -21,11 +21,7 @@ class App extends Component{
     return (
       <div>
         <h1>React Todos App</h1>
-        <TextInput ref='input' 
-          updateText={this.updateText.bind(this)} 
-          deleteLetter={this.deleteLetter.bind(this)}
-          text={this.state.text}
-        />
+        <TodoInput text={this.state.text}/>
       </div>
     );
   }
