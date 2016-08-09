@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
+// connects component with the redux state. 
+import {connect} from 'react-redux'
 
 class App extends Component{
   constructor(){
@@ -14,6 +16,9 @@ class App extends Component{
     let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
     this.setState({text});
   }
+  clearText(){
+    this.setState({text: ''});
+  }
   render(){
     return (
       <div>
@@ -21,11 +26,20 @@ class App extends Component{
         <TodoInput ref='input' 
           text={this.state.text}
           updateText={this.updateText.bind(this)}
+          clearText={this.clearText.bind(this)}
+          dispatch={this.props.dispatch}
         />
-        <TodoList/>
+        <TodoList todos={this.props.todos}/>
       </div>
     );
   }
 }
 
-export default App
+function mapStateToProps(state){
+  // the state comes from the store in the Provider component
+  // return the part of the state you want the component to receive
+  return state;
+}
+
+// now App has todos as its this.props
+export default connect(mapStateToProps)(App);

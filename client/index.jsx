@@ -1,7 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 import App from '../components/App'
-import configureStore from '../redux/store'
+import configureStore from '../components/redux/store'
 // wraps the app and grabs state from store to pass it down to components as props
 import {Provider} from 'react-redux'
 
