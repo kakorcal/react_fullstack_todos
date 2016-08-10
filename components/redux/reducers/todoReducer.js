@@ -7,7 +7,7 @@ function getId(todos){
 export default function todoReducer(todos = [], action){
   switch(action.type){
     case 'GET_TODOS':
-      return todos.concat(action.todos);
+      return action.todos ? action.todos : [];
     case 'ADD_TODO':
       return [
         {

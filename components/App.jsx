@@ -14,6 +14,9 @@ class App extends Component{
       text: ''
     };
   }
+  componentDidMount(){
+    this.props.actions.getTodos();
+  }
   updateText(){
     let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
     this.setState({text});
@@ -32,7 +35,6 @@ class App extends Component{
           addTodo={this.props.actions.addTodo}
         />
         <TodoList todos={this.props.todos} actions={this.props.actions}/>
-        <hr/>
       </div>
     );
   }

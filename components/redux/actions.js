@@ -23,7 +23,7 @@ let actions = {
   //     id: Math.round(Math.random() * 100)
   //   }
   // },
-  getTodo(){
+  getTodos(){
     return {
       type: 'GET_TODOS'
     }

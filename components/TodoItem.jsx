@@ -8,16 +8,12 @@ export default class TodoItem extends Component {
     this.props.actions.deleteTodo(this.props.item.id);
   }
   render(){
-    let linethrough = {
-      textDecoration: 'line-through'
-    };
+    let linethrough = {textDecoration: 'line-through'};
+    let clearline = {textDecoration: 'none'};
+
     return (
       <li>
-        {
-          this.props.item.completed 
-          ? <p style={linethrough}>{this.props.item.todo}</p>
-          : <p>{this.props.item.todo}</p>
-        }
+        <p style={this.props.item.completed ? linethrough : clearline}>{this.props.item.todo}</p>
         <button onClick={this.handleComplete.bind(this)}>
           {this.props.item.completed ? 'Undo' : 'Completed'}
         </button>
