@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 
 export default class TodoItem extends Component {
   handleComplete(e){
-    this.props.actions.completeTodo(this.props.todo.id);
+    this.props.actions.completeTodo(this.props.item.id);
   }
   handleDelete(e){
-    this.props.actions.deleteTodo(this.props.todo.id);
+    this.props.actions.deleteTodo(this.props.item.id);
   }
   render(){
     let linethrough = {
@@ -14,12 +14,12 @@ export default class TodoItem extends Component {
     return (
       <li>
         {
-          this.props.todo.completed 
-          ? <p style={linethrough}>{this.props.todo.text}</p>
-          : <p>{this.props.todo.text}</p>
+          this.props.item.completed 
+          ? <p style={linethrough}>{this.props.item.todo}</p>
+          : <p>{this.props.item.todo}</p>
         }
         <button onClick={this.handleComplete.bind(this)}>
-          {this.props.todo.completed ? 'Undo' : 'Completed'}
+          {this.props.item.completed ? 'Undo' : 'Completed'}
         </button>
         <button onClick={this.handleDelete.bind(this)}>Delete</button>
       </li>

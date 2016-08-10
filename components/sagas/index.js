@@ -1,10 +1,8 @@
 import {getTodos} from '../services/api'
-
-export function* sayHello(){
-  console.log('Hello');
-}
+import {put} from 'redux-saga/effects'
 
 export function* loadTodos(){
   const todos = yield getTodos();
-  console.log(todos);
+  // put dispatches actions for you
+  yield put({type: 'GET_TODOS', todos});
 }

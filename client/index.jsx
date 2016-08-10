@@ -11,13 +11,12 @@ let initialState = {
   todos: [{
     id: 0,
     completed: false,
-    text: 'Initial Todo'
+    todo: 'Initial Todo'
   }],
   user: {
     username: 'ken',
     id: 13
-  },
-  list: []
+  }
 };
 
 let store = configureStore(initialState);

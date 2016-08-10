@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
 import UserInfo from './UserInfo'
-import DbList from './DbList'
 import actions from './redux/actions'
 // connects component with the redux state. 
 import {connect} from 'react-redux'
@@ -36,7 +35,6 @@ class App extends Component{
         />
         <TodoList todos={this.props.todos} actions={this.props.actions}/>
         <hr/>
-        <DbList list={this.props.list} actions={this.props.actions}/>
       </div>
     );
   }

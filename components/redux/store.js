@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers/index'
 import logger from 'redux-logger'
 
-export default function configureStore(initialState = {todos: [], user: {}, list: []}){
+export default function configureStore(initialState = {todos: [], user: {}}){
   const sagaMiddleware = createSagaMiddleware();
   const store =  createStore(
     rootReducer, 
