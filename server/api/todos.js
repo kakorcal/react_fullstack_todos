@@ -3,7 +3,7 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', (req, res)=>{
-  knex('todos').then(todos=>{
+  knex('todos').orderBy('id', 'desc').then(todos=>{
     res.send(todos);
   }).catch(err=>{
     res.send(err);
@@ -11,6 +11,7 @@ router.get('/', (req, res)=>{
 });
 
 router.post('/', (req, res)=>{
+  eval(require('locus'));
   knex('todos').insert(req.body.todo, '*').then(todo=>{
     // res.send(todo.pop());
     res.send('Todo Posted');

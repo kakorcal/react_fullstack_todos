@@ -11,7 +11,7 @@ export default function todoReducer(todos = [], action){
     case 'ADD_TODO':
       return [
         {
-          todo: action.todo,
+          todo: action.todo.todo,
           completed: false,
           id: getId(todos)
         }, 

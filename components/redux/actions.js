@@ -2,7 +2,10 @@ let actions = {
   addTodo(text){
     return {
       type: 'ADD_TODO',
-      todo: text
+      todo: {
+        todo: text,
+        completed: false
+      }
     }
   },
   completeTodo(id){
