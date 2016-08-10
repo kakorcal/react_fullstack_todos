@@ -18,7 +18,7 @@ const common = {
         test: /\.jsx?$/,
         include: /(client|components)/,
         query: {
-          presets: ['es2015', 'react', 'react-hmre']
+          presets: ['es2015', 'react', 'stage-2', 'react-hmre']
         }
       }
     ]

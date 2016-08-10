@@ -8,6 +8,7 @@ exports.entry = function(env){
       return {
         entry: [
           'webpack-hot-middleware/client',
+          'babel-polyfill',
           path.resolve('client', 'index.jsx')
         ]
       };

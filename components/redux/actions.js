@@ -22,6 +22,11 @@ let actions = {
       type: 'CREATE_USER_ID',
       id: Math.round(Math.random() * 100)
     }
+  },
+  getTodo(){
+    return {
+      type: 'GET_TODOS'
+    }
   }
 };
 
