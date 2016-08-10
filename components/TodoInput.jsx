@@ -6,7 +6,7 @@ export default class TodoInput extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    this.props.addTodo(this.props.text);
+    this.props.postTodo(this.props.text);
     this.props.clearText();
   }
   render(){

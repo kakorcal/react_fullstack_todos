@@ -1,7 +1,7 @@
 let actions = {
-  addTodo(text){
+  postTodo(text){
     return {
-      type: 'ADD_TODO',
+      type: 'POST_TODO',
       todo: {
         todo: text,
         completed: false

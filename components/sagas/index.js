@@ -15,8 +15,9 @@ function* loadTodos(){
 
 function* loadPost({todo}){
   console.log('Load Post');
-  const message = yield postTodo(todo);
-  console.log(message);
+  const newTodo = yield postTodo(todo);
+  console.log('Post Todo', newTodo);
+  yield put({type: 'ADD_TODO', todo: newTodo});
 }
 
 function* loadDelete(id){
@@ -45,7 +46,7 @@ function* watchForLoadTodos(){
 function* watchForLoadPost(){
   while(true){
     console.log('Watch For Load Post');
-    const todo = yield take('ADD_TODO');
+    const todo = yield take('POST_TODO');
     yield fork(loadPost, todo);
   }
 }

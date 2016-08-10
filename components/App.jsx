@@ -15,6 +15,7 @@ class App extends Component{
     };
   }
   componentDidMount(){
+    // init todos
     this.props.actions.getTodos();
   }
   updateText(){
@@ -32,7 +33,7 @@ class App extends Component{
           text={this.state.text}
           updateText={this.updateText.bind(this)}
           clearText={this.clearText.bind(this)}
-          addTodo={this.props.actions.addTodo}
+          postTodo={this.props.actions.postTodo}
         />
         <TodoList todos={this.props.todos} actions={this.props.actions}/>
       </div>

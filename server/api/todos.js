@@ -12,8 +12,7 @@ router.get('/', (req, res)=>{
 
 router.post('/', (req, res)=>{
   knex('todos').insert(req.body.todo, '*').then(todo=>{
-    // res.send(todo.pop());
-    res.send('Todo Posted');
+    res.send(todo[0]);
   }).catch(err=>{
     res.send(err);
   });
@@ -28,7 +27,6 @@ router.put('/:id', (req, res)=>{
 });
 
 router.delete('/:id', (req, res)=>{
-  eval(require('locus'));
   knex('todos').where('id', +req.params.id).del().then(()=>{
     res.send('Todo Deleted');
   }).catch(err=>{
