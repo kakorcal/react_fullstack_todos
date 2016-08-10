@@ -2,7 +2,7 @@ let actions = {
   addTodo(text){
     return {
       type: 'ADD_TODO',
-      text: text
+      todo: text
     }
   },
   completeTodo(id){
@@ -17,12 +17,12 @@ let actions = {
       id: id
     }
   },
-  createNewUserId(){
-    return {
-      type: 'CREATE_USER_ID',
-      id: Math.round(Math.random() * 100)
-    }
-  },
+  // createNewUserId(){
+  //   return {
+  //     type: 'CREATE_USER_ID',
+  //     id: Math.round(Math.random() * 100)
+  //   }
+  // },
   getTodo(){
     return {
       type: 'GET_TODOS'

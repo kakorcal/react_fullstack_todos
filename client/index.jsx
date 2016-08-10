@@ -7,18 +7,7 @@ import configureStore from '../components/redux/store'
 // wraps the app and grabs state from store to pass it down to components as props
 import {Provider} from 'react-redux'
 
-let initialState = {
-  todos: [{
-    id: 0,
-    completed: false,
-    todo: 'Initial Todo'
-  }],
-  user: {
-    username: 'ken',
-    id: 13
-  }
-};
-
+let initialState = {todos: []};
 let store = configureStore(initialState);
 store.runSaga(loadTodos);
 
