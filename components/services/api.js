@@ -8,8 +8,13 @@ export function getTodos(){
 }
 
 export function postTodo(todo){
-  console.log(todo);
   return axios.post(BASE_URI, {todo})
+    .then(({data}) => data)
+    .catch(err => {throw err});
+}
+
+export function deleteTodo(id){
+  return axios.delete(`${BASE_URI}/${id}`)
     .then(({data}) => data)
     .catch(err => {throw err});
 }

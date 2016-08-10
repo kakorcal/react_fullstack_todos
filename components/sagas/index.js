@@ -1,5 +1,9 @@
-import {getTodos, postTodo} from '../services/api'
-import {put, take, call, fork, select} from 'redux-saga/effects'
+import {getTodos, postTodo, deleteTodo} from '../services/api'
+import {put, take, fork} from 'redux-saga/effects'
+
+//***************************************************************************
+  // loaders
+//***************************************************************************
 
 function* loadTodos(){
   console.log('Load Todos');
@@ -7,6 +11,23 @@ function* loadTodos(){
   // the put function dispatches actions for you
   yield put({type: 'GET_TODOS', todos});
 }
+
+
+function* loadPost({todo}){
+  console.log('Load Post');
+  const message = yield postTodo(todo);
+  console.log(message);
+}
+
+function* loadDelete(id){
+  console.log('Load Delete');
+  const message = yield deleteTodo(id);
+  console.log(message);
+}
+
+//***************************************************************************
+  // watchers
+//***************************************************************************
 
 function* watchForLoadTodos(){
   while(true){
@@ -21,25 +42,30 @@ function* watchForLoadTodos(){
   }
 }
 
-function* loadPost({todo}){
-  console.log('Load Post');
-  console.log('TODO', todo);
-  const message = yield postTodo(todo);
-  console.log(message);
-}
-
 function* watchForLoadPost(){
   while(true){
     console.log('Watch For Load Post');
     const todo = yield take('ADD_TODO');
-    console.log('TODO: ', todo);
     yield fork(loadPost, todo);
   }
 }
 
+function* watchForLoadDelete(){
+  while(true){
+    console.log('Watch For Load Delete');
+    const todo = yield take('DELETE_TODO');
+    yield fork(loadDelete, todo.id);
+  }
+}
+
+//***************************************************************************
+  // Root Saga
+//***************************************************************************
+
 export default function* root(){
   yield [
     fork(watchForLoadTodos),
-    fork(watchForLoadPost)
+    fork(watchForLoadPost),
+    fork(watchForLoadDelete)
   ];
 }
