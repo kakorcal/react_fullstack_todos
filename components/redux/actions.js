@@ -8,10 +8,14 @@ let actions = {
       }
     }
   },
-  completeTodo(id){
+  editTodo(updatedTodo){
     return {
-      type: 'COMPLETE_TODO',
-      id: id
+      type: 'EDIT_TODO',
+      todo: {
+        todo: updatedTodo.todo,
+        id: updatedTodo.id,
+        completed: !updatedTodo.completed
+      }
     }
   },
   deleteTodo(id){

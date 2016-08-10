@@ -20,7 +20,7 @@ router.post('/', (req, res)=>{
 
 router.put('/:id', (req, res)=>{
   knex('todos').where('id', +req.params.id).update(req.body.todo).then(()=>{
-    res.send('Todo Updated');
+    res.send(req.body.todo);
   }).catch(err=>{
     res.send(err);
   });

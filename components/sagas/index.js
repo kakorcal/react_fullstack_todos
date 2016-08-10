@@ -1,4 +1,4 @@
-import {getTodos, postTodo, deleteTodo} from '../services/api'
+import {getTodos, postTodo, editTodo, deleteTodo} from '../services/api'
 import {put, take, fork} from 'redux-saga/effects'
 
 //***************************************************************************
@@ -18,6 +18,13 @@ function* loadPost({todo}){
   const newTodo = yield postTodo(todo);
   console.log('Post Todo', newTodo);
   yield put({type: 'ADD_TODO', todo: newTodo});
+}
+
+function* loadEdit({todo}){
+  console.log('Load Edit');
+  const newTodo = yield editTodo(todo);
+  console.log('Edit Todo', newTodo);
+  yield put({type: 'UPDATE_TODO', todo: newTodo});
 }
 
 function* loadDelete(id){
@@ -51,6 +58,14 @@ function* watchForLoadPost(){
   }
 }
 
+function* watchForLoadEdit(){
+  while(true){
+    console.log('Watch For Load Edit');
+    const todo = yield take('EDIT_TODO');
+    yield fork(loadEdit, todo);
+  }
+}
+
 function* watchForLoadDelete(){
   while(true){
     console.log('Watch For Load Delete');
@@ -67,6 +82,7 @@ export default function* root(){
   yield [
     fork(watchForLoadTodos),
     fork(watchForLoadPost),
+    fork(watchForLoadEdit),
     fork(watchForLoadDelete)
   ];
 }

@@ -13,6 +13,12 @@ export function postTodo(todo){
     .catch(err => {throw err});
 }
 
+export function editTodo(todo){
+  return axios.put(`${BASE_URI}/${todo.id}`, {todo})
+    .then(({data}) => data)
+    .catch(err => {throw err});
+}
+
 export function deleteTodo(id){
   return axios.delete(`${BASE_URI}/${id}`)
     .then(({data}) => data)

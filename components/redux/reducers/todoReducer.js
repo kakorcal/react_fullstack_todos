@@ -14,10 +14,12 @@ export default function todoReducer(todos = [], action){
         // adding rest of todos
         ...todos
       ];
-    case 'COMPLETE_TODO':
+    case 'EDIT_TODO':
+      return todos.map(e => e);
+    case 'UPDATE_TODO':
       return todos.map(todo=>{
         // NOTE: don't want to mutate todo as well
-        return todo.id === action.id ? 
+        return todo.id === action.todo.id ? 
           Object.assign({}, todo, {completed: !todo.completed}) : todo;
       });
     case 'DELETE_TODO':
