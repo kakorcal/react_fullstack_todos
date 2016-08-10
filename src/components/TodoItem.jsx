@@ -15,7 +15,7 @@ export default class TodoItem extends Component {
       <li>
         <p style={this.props.item.completed ? linethrough : clearline}>{this.props.item.todo}</p>
         <button onClick={this.handleEdit.bind(this)}>
-          {this.props.item.completed ? 'Undo' : 'Complete'}
+          {this.props.item.completed ? 'Mark As Incomplete' : 'Mark As Complete'}
         </button>
         <button onClick={this.handleDelete.bind(this)}>Delete</button>
       </li>

@@ -16,10 +16,16 @@ const common = {
       {
         loader: 'babel-loader',
         test: /\.jsx?$/,
-        include: /(client|components)/,
+        include: /(client|src)/,
         query: {
           presets: ['es2015', 'react', 'stage-2', 'react-hmre']
         }
+      },
+      {
+        loaders: ['style', 'css?sourceMap', 'sass?sourceMap'],
+        test: /\.s?css$/,
+        include: /(client|src)/,
+
       }
     ]
   },

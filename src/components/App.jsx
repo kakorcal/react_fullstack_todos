@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
-import actions from './redux/actions'
+import actions from '../redux/actions'
 // connects component with the redux state. 
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -10,12 +10,10 @@ import {bindActionCreators} from 'redux'
 class App extends Component{
   constructor(){
     super();
-    this.state = {
-      text: ''
-    };
+    this.state = {text: ''};
   }
   componentDidMount(){
-    // init todos
+    // init todos. might want to add a loading
     this.props.actions.getTodos();
   }
   updateText(){
