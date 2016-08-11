@@ -14,10 +14,12 @@ export default class TodoItem extends Component {
     return (
       <li className='pure-menu-item'>
         <p style={this.props.item.completed ? linethrough : clearline}>{this.props.item.todo}</p>
-        <button onClick={this.handleEdit.bind(this)}>
-          {this.props.item.completed ? 'Mark As Incomplete' : 'Mark As Complete'}
+        <button className='pure-button button-white' onClick={this.handleEdit.bind(this)}>
+          <i className={this.props.item.completed ? 'fa fa-check-circle-o fa-lg button-success' : 'fa fa-circle-o fa-lg button-success'}></i>
         </button>
-        <button onClick={this.handleDelete.bind(this)}><i className='fa fa-trash-o'></i></button>
+        <button className='pure-button button-white' onClick={this.handleDelete.bind(this)}>
+          <i className='fa fa-trash-o fa-lg button-error'></i>
+        </button>
       </li>
     );
   }
