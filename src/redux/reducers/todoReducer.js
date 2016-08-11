@@ -33,7 +33,8 @@ export default function todoReducer(todos = [], action){
       });
     case 'FILTER_TODOS':
       return todos.map(item => {
-        let stringMatch = item.todo.toLowerCase().includes(action.search);
+        let searchText = action.search.toLowerCase();
+        let stringMatch = item.todo.toLowerCase().includes(searchText);
         if(!stringMatch){
           item.hide = true;
         }else{

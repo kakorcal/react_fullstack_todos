@@ -1,0 +1,14 @@
+form.pure-form {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+form.pure-form input[type='text'].todo-input {
+  flex-grow: 1;
+  margin-right: 5px;
+  padding: 10px 16px;
+}
+
+form.pure-form button.pure-button {
+  padding: 0.5em 1.3em;
+}

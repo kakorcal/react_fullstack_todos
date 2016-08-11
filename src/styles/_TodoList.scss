@@ -1,0 +1,42 @@
+ul.pure-menu-list li.filter-item {
+  display: none;
+}
+
+ul.pure-menu-list li.pure-menu-item {
+  display: flex;
+}
+
+ul.pure-menu-list li {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+}
+
+ul.pure-menu-list li p {
+  margin: 0;
+  padding: 16px;
+  text-align: left;
+  flex-grow: 1;
+  word-wrap: break-word;
+  min-width: 0;
+}
+
+ul.pure-menu-list li p:hover {
+  background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
+
+.button-white {
+  background: white;
+  border-left: 1px solid #ccc;
+}
+
+.button-success {
+  color: #7bcdbe;
+}
+
+.button-warning {
+  color: #ffa500;
+}
+
+.button-error {
+  color: #af5b5e;
+}
