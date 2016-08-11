@@ -13,5 +13,18 @@ module.exports = {
     seeds: {
       directory: path.resolve('server/db/seeds')
     }
-  }
+  },
+  production: {
+    client: 'pg',
+    debug: true,
+    connection: {
+      database: 'react_todos_app'
+    },
+    migrations: {
+      directory: path.resolve('server/db/migrations')
+    },
+    seeds: {
+      directory: path.resolve('server/db/seeds')
+    }
+  },
 }

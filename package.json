@@ -5,8 +5,10 @@
   "main": "./server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon",
-    "build": "webpack"
+    "dev": "nodemon",
+    "start": "NODE_ENV=production node ./server/app.js",
+    "build": "webpack",
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",

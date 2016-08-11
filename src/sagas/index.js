@@ -12,7 +12,6 @@ function* loadTodos(){
   yield put({type: 'GET_TODOS', todos});
 }
 
-
 function* loadPost({todo}){
   console.log('Load Post');
   const newTodo = yield postTodo(todo);
