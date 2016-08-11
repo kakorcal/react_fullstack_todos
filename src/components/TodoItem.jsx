@@ -17,8 +17,7 @@ export default class TodoItem extends Component {
         <button onClick={this.handleEdit.bind(this)}>
           {this.props.item.completed ? 'Mark As Incomplete' : 'Mark As Complete'}
         </button>
-        <button onClick={this.handleDelete.bind(this)}>Delete</button>
-        <i className='fa fa-rocket'></i>
+        <button onClick={this.handleDelete.bind(this)}><i className='fa fa-trash-o'></i></button>
       </li>
     );
   }

@@ -13,7 +13,7 @@ class App extends Component{
     this.state = {text: ''};
   }
   componentDidMount(){
-    // init todos. might want to add a loading
+    // init todos. might want to add a loading state
     this.props.actions.getTodos();
   }
   updateText(){

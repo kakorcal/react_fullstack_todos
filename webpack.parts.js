@@ -40,6 +40,7 @@ exports.hmr = function(){
   return {
     plugins: [
       new webpack.optimize.OccurrenceOrderPlugin(),
+      // NOTE: you can't use this with the ExtractTextPlugin
       new webpack.HotModuleReplacementPlugin(),
       // don't allow webpack to finish building if an error occurs
       new webpack.NoErrorsPlugin()
