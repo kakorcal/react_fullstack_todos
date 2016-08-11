@@ -17,7 +17,7 @@ if(process.env.NODE_ENV !== 'production'){
   const webpack = require('webpack');
   const config = require('../webpack.config');
   const compiler = webpack(config);
-  let bundleStart = null;
+  var bundleStart = null;
   
   // doesn't actually create bundle.js. it simulates it.
   app.use(require('webpack-dev-middleware')(compiler, {
