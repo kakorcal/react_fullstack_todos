@@ -19,8 +19,10 @@ switch(process.env.npm_lifecycle_event){
     break;
   case 'postinstall':
     config = prod;
+    break;
   case 'start':
     config = prod;
+    break;
   default:
     throw "Invalid command"
 }
