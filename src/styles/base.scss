@@ -1,0 +1,32 @@
+@import '~purecss/build/pure.css';
+
+#root {
+  text-align: center;
+  margin: 0 auto;
+  width: 545px;
+}
+
+.custom-restricted {
+  height: 520px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+ul.pure-menu-list li p {
+  margin: 0;
+  padding: 16px;
+}
+
+ul.pure-menu-list li:nth-child(odd){
+  background: #ececec;
+}
+
+form.pure-form {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+form.pure-form input {
+  flex-grow: 1;
+  margin-right: 5px;
+}

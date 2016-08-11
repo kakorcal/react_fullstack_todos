@@ -4,12 +4,11 @@ import TodoItem from './TodoItem'
 export default class TodoInput extends Component {
   render(){
     return (
-      <div>
-        <p>Lots Of Stuff Todo!</p>
-        <ul>
+      <div className='pure-menu pure-menu-scrollable custom-restricted'>
+        <ul className='pure-menu-list'>
           {
-            this.props.todos.map(todo=>{
-              return <TodoItem key={todo.id} item={todo} actions={this.props.actions}/>;
+            this.props.todos.map((todo, idx)=>{
+              return <TodoItem key={idx + 1} item={todo} actions={this.props.actions}/>;
             })
           }
         </ul>

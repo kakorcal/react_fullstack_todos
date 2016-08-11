@@ -11,17 +11,16 @@ export default class TodoInput extends Component {
   }
   render(){
     return (
-      <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" 
-            ref='text'
-            placeholder='Add Todos...'
-            value={this.props.text}
-            onChange={this.updateText.bind(this)}
-          />
-          <button type='submit'>SUBMIT</button>
-        </form>
-      </div>
+      <form className='pure-form' onSubmit={this.handleSubmit.bind(this)}>
+        <input type="text" 
+          ref='text'
+          placeholder='Lots Of Stuff Todo!!'
+          value={this.props.text}
+          onChange={this.updateText.bind(this)}
+          autoFocus
+        />
+        <button type='submit' className='pure-button pure-button-primary'>SUBMIT</button>
+      </form>
     );
   }
 }
