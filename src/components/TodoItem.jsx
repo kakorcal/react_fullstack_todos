@@ -12,8 +12,8 @@ export default class TodoItem extends Component {
     let clearline = {textDecoration: 'none'};
 
     return (
-      <li className='pure-menu-item'>
-        <p style={this.props.item.completed ? linethrough : clearline}>{this.props.item.todo}</p>
+      <li className={this.props.item.hide ? 'filter-item' : 'pure-menu-item'}>
+        <p style={this.props.item.completed ? linethrough : clearline}>{this.props.idx}. {this.props.item.todo}</p>
         <button className='pure-button button-white' onClick={this.handleEdit.bind(this)}>
           <i className={this.props.item.completed ? 'fa fa-check-circle-o fa-lg button-success' : 'fa fa-circle-o fa-lg button-success'}></i>
         </button>
@@ -24,3 +24,8 @@ export default class TodoItem extends Component {
     );
   }
 }
+
+// TODO: Add edit button
+// <button className='pure-button button-white'>
+//   <i className='fa fa-edit fa-lg button-warning'></i>
+// </button>

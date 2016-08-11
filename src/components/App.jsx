@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import SearchInput from './SearchInput'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
 import actions from '../redux/actions'
@@ -10,24 +11,38 @@ import {bindActionCreators} from 'redux'
 class App extends Component{
   constructor(){
     super();
-    this.state = {text: ''};
+    this.state = {
+      text: '',
+      search: ''
+    };
   }
   componentDidMount(){
     // init todos. might want to add a loading state
     this.props.actions.getTodos();
   }
   updateText(){
-    let text = ReactDOM.findDOMNode(this.refs.input.refs.text).value;
-    this.setState({text});
+    let text = ReactDOM.findDOMNode(this.refs.todoInput.refs.text).value;
+    this.setState(Object.assign({}, this.state, {text}));
   }
   clearText(){
-    this.setState({text: ''});
+    this.setState(Object.assign({}, this.state, {text: ''}));
+  }
+  handleSearch(){
+    let search = ReactDOM.findDOMNode(this.refs.searchInput.refs.search).value;
+    this.props.actions.filterTodos(search);
+    this.setState(Object.assign({}, this.state, {search}));
   }
   render(){
     return (
       <div>
-        <h1>React Todos App</h1>
-        <TodoInput ref='input' 
+        <div className='todo-header'>
+          <h1>React Todos App</h1>
+          <SearchInput ref='searchInput' 
+            search={this.state.search} 
+            handleSearch={this.handleSearch.bind(this)}
+          />
+        </div>
+        <TodoInput ref='todoInput' 
           text={this.state.text}
           updateText={this.updateText.bind(this)}
           clearText={this.clearText.bind(this)}

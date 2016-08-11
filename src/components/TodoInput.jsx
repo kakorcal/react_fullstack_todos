@@ -17,6 +17,7 @@ export default class TodoInput extends Component {
           placeholder='Lots Of Stuff Todo!!'
           value={this.props.text}
           onChange={this.updateText.bind(this)}
+          className='todo-input'
           autoFocus
         />
         <button type='submit' className='pure-button pure-button-primary'>SUBMIT</button>

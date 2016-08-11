@@ -12,8 +12,8 @@ let actions = {
     return {
       type: 'EDIT_TODO',
       todo: {
-        todo: updatedTodo.todo,
         id: updatedTodo.id,
+        todo: updatedTodo.todo,
         completed: !updatedTodo.completed
       }
     }
@@ -33,6 +33,12 @@ let actions = {
   getTodos(){
     return {
       type: 'GET_TODOS'
+    }
+  },
+  filterTodos(search){
+    return{
+      type: 'FILTER_TODOS',
+      search
     }
   }
 };

@@ -1,15 +1,20 @@
 export default function todoReducer(todos = [], action){
   switch(action.type){
     case 'GET_TODOS':
-      return action.todos ? action.todos : [];
+      return action.todos 
+        ? action.todos.map(todo => {
+          todo.hide = false;
+          return todo;
+        }) : [];
     case 'POST_TODO':
       return todos.map(e => e);
     case 'ADD_TODO':
       return [
         {
+          id: action.todo.id,
           todo: action.todo.todo,
           completed: false,
-          id: action.todo.id
+          hide: false
         }, 
         // adding rest of todos
         ...todos
@@ -25,6 +30,16 @@ export default function todoReducer(todos = [], action){
     case 'DELETE_TODO':
       return todos.filter(todo=>{
         return todo.id !== action.id;
+      });
+    case 'FILTER_TODOS':
+      return todos.map(item => {
+        let stringMatch = item.todo.toLowerCase().includes(action.search);
+        if(!stringMatch){
+          item.hide = true;
+        }else{
+          item.hide = false;
+        }
+        return item;
       });
     default:
       return todos;

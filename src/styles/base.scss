@@ -1,16 +1,28 @@
 @import '~purecss/build/pure.css';
 @import '~font-awesome/css/font-awesome.css';
 
+/* index.html */
+
 #root {
-  text-align: center;
+  // text-align: center;
   margin: 0 auto;
-  width: 545px;
+  width: 625px;
 }
 
 .custom-restricted {
-  height: 520px;
+  height: 525px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/* TodoItem.jsx */
+
+ul.pure-menu-list li.filter-item {
+  display: none;
+}
+
+ul.pure-menu-list li.pure-menu-item {
+  display: flex;
 }
 
 ul.pure-menu-list li {
@@ -31,20 +43,6 @@ ul.pure-menu-list li p:hover {
   background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
 }
 
-form.pure-form {
-  display: flex;
-  margin-bottom: 5px;
-}
-
-form.pure-form input {
-  flex-grow: 1;
-  margin-right: 5px;
-}
-
-form.pure-form button.pure-button {
-  padding: 0.5em 1.3em;
-}
-
 .button-white {
   background: white;
   border-left: 1px solid #ccc;
@@ -54,6 +52,42 @@ form.pure-form button.pure-button {
   color: #7bcdbe;
 }
 
+.button-warning {
+  color: #ffa500;
+}
+
 .button-error {
   color: #af5b5e;
 }
+
+/* TodoInput.jsx */
+
+form.pure-form {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+form.pure-form input[type='text'].todo-input {
+  flex-grow: 1;
+  margin-right: 5px;
+  padding: 10px 16px;
+}
+
+form.pure-form button.pure-button {
+  padding: 0.5em 1.3em;
+}
+
+/* SearchInput.jsx */
+
+.todo-header {
+  display: flex;
+}
+
+.todo-header h1 {
+  flex-grow: 1;
+}
+
+.pure-form.search-form {
+  align-self: center;
+}
+

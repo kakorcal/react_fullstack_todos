@@ -8,7 +8,10 @@ export default class TodoInput extends Component {
         <ul className='pure-menu-list'>
           {
             this.props.todos.map((todo, idx)=>{
-              return <TodoItem key={idx + 1} item={todo} actions={this.props.actions}/>;
+              return <TodoItem key={todo.id} 
+                item={todo} idx={idx + 1}
+                actions={this.props.actions}
+              />;
             })
           }
         </ul>
