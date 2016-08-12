@@ -8,6 +8,9 @@ export default class SearchInput extends Component{
   render(){
     return (
       <div className='pure-form search-form'>
+        <a href="https://github.com/kakorcal/react_fullstack_todos" target='_blank'>
+          <i className='fa fa-github'></i>
+        </a>
         <input type="text" ref='search'
           placeholder='Search...' 
           value={this.props.search}

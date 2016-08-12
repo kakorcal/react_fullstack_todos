@@ -12,13 +12,12 @@ const entryPoint = process.env.NODE_ENV === 'production' ? prodFile : devFile;
 app.use(require('morgan')('tiny'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
+console.log(entryPoint);
 if(process.env.NODE_ENV !== 'production'){
   const webpack = require('webpack');
   const config = require('../webpack.config');
   const compiler = webpack(config);
   var bundleStart = null;
-  
   // doesn't actually create bundle.js. it simulates it.
   app.use(require('webpack-dev-middleware')(compiler, {
     // simulates the dist folder
@@ -31,10 +30,11 @@ if(process.env.NODE_ENV !== 'production'){
     }
   }));
   app.use(require('webpack-hot-middleware')(compiler));
+}else{
+  // the built bundle.js is put in here
+  app.use(express.static('./dist'));  
 }
 
-// the built bundle.js is put in here
-app.use(express.static('./dist'));
 app.use('/api/todos', routes.todos);
 
 app.get('/', (req, res)=>{

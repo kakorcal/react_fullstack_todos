@@ -8,4 +8,21 @@
 
 .pure-form.search-form {
   align-self: center;
+  position: relative;
+}
+
+.pure-form.search-form a {
+  position: absolute;
+  top: -2px;
+  left: -45px;
+  color: #000;
+}
+
+.pure-form.search-form a:hover {
+  cursor: pointer;
+  color: rgb(0, 120, 231);
+}
+
+.pure-form.search-form a i {
+  font-size: 2.4em;
 }
